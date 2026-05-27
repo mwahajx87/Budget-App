@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budgetting App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <h1>Budget App</h1>
+    <div id="main">
+      <div id="top">
+        <div id="budget">
+          <h1>Budget</h1>
+          <input type="number" placeholder="Enter Total Amount" />
+          <button onclick="setBudget()">Set Budget</button>
+        </div>
+        <div id="expenses">
+          <h1>Expenses</h1>
+          <div>
+            <input type="text" placeholder="Enter Title of Product" />
+            <input type="number" placeholder="Enter Cost of Product" />
+          </div>
+          <button onclick="checkAmount()">Check Amount</button>
+        </div>
+      </div>
+      <div id="center">
+        <div>
+          <h1>Total Budget</h1>
+          <p>0</p>
+        </div>
+        <div>
+          <h1>Expenses</h1>
+          <p>0</p>
+        </div>
+        <div>
+          <h1>Balance</h1>
+          <p>0</p>
+        </div>
+      </div>
+      <div id="bottom">
+        <h1>Expense List</h1>
+        <div>
+          <h2>No Data Found!</h2>
+        </div>
+        <ul>
+          <li>
+            <span>Expense Title</span>
+            <span>Expense Cost</span>
+            <div>
+              <i
+                onclick="edit()"
+                class="fa-solid fa-pen-to-square"
+                style="color: #587ef1"
+              ></i>
+              <i
+                onclick="Delete()"
+                class="fa-solid fa-trash-can"
+                style="color: #587ef1"
+              ></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

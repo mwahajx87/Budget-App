@@ -18,14 +18,26 @@
       <div id="top">
         <div id="budget">
           <h1>Budget</h1>
-          <input type="number" placeholder="Enter Total Amount" />
+          <input
+            id="totalAmount"
+            type="number"
+            placeholder="Enter Total Amount"
+          />
           <button onclick="setBudget()">Set Budget</button>
         </div>
         <div id="expenses">
           <h1>Expenses</h1>
           <div>
-            <input type="text" placeholder="Enter Title of Product" />
-            <input type="number" placeholder="Enter Cost of Product" />
+            <input
+              id="productName"
+              type="text"
+              placeholder="Enter Title of Product"
+            />
+            <input
+              id="productCost"
+              type="number"
+              placeholder="Enter Cost of Product"
+            />
           </div>
           <button onclick="checkAmount()">Check Amount</button>
         </div>
@@ -33,40 +45,23 @@
       <div id="center">
         <div>
           <h1>Total Budget</h1>
-          <p>0</p>
+          <p id="totalBudget">0</p>
         </div>
         <div>
           <h1>Expenses</h1>
-          <p>0</p>
+          <p id="expense">0</p>
         </div>
         <div>
           <h1>Balance</h1>
-          <p>0</p>
+          <p id="balance">0</p>
         </div>
       </div>
       <div id="bottom">
         <h1>Expense List</h1>
-        <div>
+        <div class="noData" id="Data">
           <h2>No Data Found!</h2>
         </div>
-        <ul>
-          <li>
-            <span>Expense Title</span>
-            <span>Expense Cost</span>
-            <div>
-              <i
-                onclick="edit()"
-                class="fa-solid fa-pen-to-square"
-                style="color: #587ef1"
-              ></i>
-              <i
-                onclick="Delete()"
-                class="fa-solid fa-trash-can"
-                style="color: #587ef1"
-              ></i>
-            </div>
-          </li>
-        </ul>
+        <ul class="expenseList"></ul>
       </div>
     </div>
   </body>

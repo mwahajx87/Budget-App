@@ -76,6 +76,8 @@ body {
   color: var(--background-color);
   font-size: 1rem;
   padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 #expenses {
   display: flex;
@@ -115,6 +117,8 @@ body {
   color: var(--background-color);
   font-size: 1rem;
   padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 
 #center {
@@ -163,10 +167,13 @@ body {
 }
 #bottom ul {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 10px;
   list-style: none;
   width: 100%;
+}
+.expenselist {
+  display: none;
 }
 #bottom ul li {
   display: flex;
@@ -187,8 +194,12 @@ body {
 }
 #bottom ul li > div > i {
   font-size: 1.2rem;
+  cursor: pointer;
 }
-#bottom > div {
+#bottom .data {
+  display: none;
+}
+#bottom .noData {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,4 +207,126 @@ body {
   height: 100%;
   font-size: 1.2rem;
   color: var(--secondary-color);
+}
+
+/* Tablet and smaller screens */
+@media (max-width: 1024px) {
+  html,
+  body {
+    gap: 30px;
+    padding: 10px;
+  }
+  #main {
+    height: auto;
+    width: 90%;
+    gap: 30px;
+  }
+  #top {
+    height: auto;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #budget,
+  #expenses {
+    height: auto;
+  }
+  #center {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  :root {
+    --font-size: 1.2rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  html,
+  body {
+    gap: 20px;
+    padding: 5px;
+  }
+  #main {
+    width: 100%;
+    gap: 20px;
+  }
+  #top {
+    gap: 15px;
+  }
+  #budget,
+  #expenses,
+  #bottom {
+    padding: 15px;
+    gap: 15px;
+  }
+  #budget h1,
+  #expenses h1,
+  #bottom h1 {
+    font-size: 1.1rem;
+  }
+  #budget input,
+  #expenses input {
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  #budget button,
+  #expenses button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    width: 100%;
+  }
+  #center {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+  #center > div {
+    width: 100%;
+  }
+  #center h1 {
+    font-size: 1rem;
+  }
+  #center p {
+    font-size: 1.1rem;
+  }
+  #bottom ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 10px;
+  }
+  #bottom ul li > div {
+    gap: 20px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  #bottom ul li > span {
+    font-size: 0.95rem;
+  }
+  :root {
+    --font-size: 1rem;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+  #budget input,
+  #expenses input {
+    height: 32px;
+    font-size: 0.85rem;
+  }
+  #budget button,
+  #expenses button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+  #bottom ul li > div {
+    gap: 15px;
+  }
+  #bottom ul li > div > i {
+    font-size: 1rem;
+  }
 }

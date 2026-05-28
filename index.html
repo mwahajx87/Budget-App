@@ -3,20 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budgetting App</title>
+    <title>Budget App</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="script.js" defer></script>
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
+    <!-- Toastr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
   </head>
   <body>
     <h1>Budget App</h1>
     <div id="main">
       <div id="top">
-        <div id="budget">
+        <div class="box">
           <h1>Budget</h1>
           <input
             id="totalAmount"
@@ -25,7 +33,7 @@
           />
           <button onclick="setBudget()">Set Budget</button>
         </div>
-        <div id="expenses">
+        <div class="box">
           <h1>Expenses</h1>
           <div>
             <input
@@ -56,10 +64,10 @@
           <p id="balance">0</p>
         </div>
       </div>
-      <div id="bottom">
+      <div id="bottom" class="box">
         <h1>Expense List</h1>
         <div class="noData" id="Data">
-          <h2>No Data Found!</h2>
+          <h2>Looks like you haven't added any expenses yet!</h2>
         </div>
         <ul class="expenseList"></ul>
       </div>

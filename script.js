@@ -5,38 +5,55 @@ var totalBudget = document.getElementById("totalBudget");
 var expense = document.getElementById("expense");
 var balance = document.getElementById("balance");
 var Data = document.getElementById("Data");
+var editLi = null;
 
 setBudget = () => {
   if (totalAmount.value === "" || totalAmount.value <= 0) {
-    alert("Please enter a valid amount!");
+    toastr.error("Please enter a valid amount!");
     return;
   } else {
     totalBudget.innerText = totalAmount.value;
     balance.innerText = totalAmount.value;
     totalAmount.value = "";
+    toastr.success("Budget set successfully!");
   }
 };
 checkAmount = () => {
   if (totalBudget.innerText === "0") {
-    alert("Please set the budget first!");
-    productName.value = "";
-    productCost.value = "";
+    toastr.error("Please set the budget first!");
   } else if (
     productName.value === "" ||
     productCost.value === "" ||
     productCost.value <= 0
   ) {
-    alert("Please enter valid product name and cost!");
+    toastr.error("Please enter valid product name and cost!");
   } else {
-    balance.innerText =
-      parseFloat(totalBudget.innerText) -
-      parseFloat(expense.innerText) -
-      parseFloat(productCost.value);
-    expense.innerText =
-      parseFloat(expense.innerText) + parseFloat(productCost.value);
-    Data.className = "data";
-    var ul = document.querySelector("ul");
-    ul.innerHTML += `      
+    if (editLi) {
+      var oldCost = parseFloat(editLi.querySelector(".pcost").innerText);
+      editLi.querySelector(".pname").innerText = productName.value;
+      editLi.querySelector(".pcost").innerText = productCost.value;
+
+      var newCost = parseFloat(productCost.value);
+      var costDifference = newCost - oldCost;
+
+      expense.innerText = parseFloat(expense.innerText) + costDifference;
+      balance.innerText = parseFloat(balance.innerText) - costDifference;
+
+      toastr.success("Expense updated successfully!");
+      editLi = null;
+    } else {
+      balance.innerText =
+        parseFloat(totalBudget.innerText) -
+        parseFloat(expense.innerText) -
+        parseFloat(productCost.value);
+      expense.innerText =
+        parseFloat(expense.innerText) + parseFloat(productCost.value);
+
+      Data.className = "data";
+
+      var ul = document.querySelector("ul");
+
+      ul.innerHTML += `      
         <li>
             <span class='pname'>${productName.value}</span>
             <span class='pcost'>${productCost.value}</span>
@@ -53,6 +70,9 @@ checkAmount = () => {
                 </i>
             </div>
         </li>`;
+      toastr.success("Expense added successfully!");
+    }
+
     productName.value = "";
     productCost.value = "";
   }
@@ -63,7 +83,8 @@ edit = (event) => {
   var pcost = li.querySelector(".pcost");
   productName.value = pname.innerText;
   productCost.value = pcost.innerText;
-  Delete(event);
+  editLi = li;
+  toastr.info("Click 'Check Amount' to save your changes!");
 };
 Delete = (event) => {
   var li = event.target.closest("li");
@@ -73,6 +94,7 @@ Delete = (event) => {
   expense.innerText =
     parseFloat(expense.innerText) - parseFloat(pcost.innerText);
   li.remove();
+  toastr.info("Expense deleted!");
   if (expense.innerText === "0") {
     Data.className = "noData";
     var ul = document.querySelector("ul");

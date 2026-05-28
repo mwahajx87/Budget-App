@@ -3,19 +3,13 @@
   --secondary-color: #3b3b3b;
   --background-color: #fff;
   --box-shadow-color: #0000003b;
-  --font-size: 1.5rem;
+  --font-size: 22px;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  font-family: cursive;
 }
 
 html,
@@ -45,7 +39,7 @@ body {
   width: 100%;
   gap: 5vw;
 }
-#budget {
+.box {
   display: flex;
   justify-content: start;
   align-items: start;
@@ -58,60 +52,51 @@ body {
   box-shadow: 0px 0px 10px 0px var(--box-shadow-color);
   padding: 20px;
 }
-#budget h1 {
-  font-size: var(--font-size);
-  color: var(--secondary-color);
+.box:hover {
+  box-shadow: 0px 0px 15px 0px var(--box-shadow-color);
+  transition: 0.1s ease-in-out;
 }
-#budget input {
-  width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  border-color: #0000001e;
-  padding: 0 0.2vw;
-  font-size: 1rem;
-}
-#budget button {
-  border-radius: 5px;
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  font-size: 1rem;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-#expenses {
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  flex-direction: column;
-  gap: 20px;
-  height: 100%;
-  width: 100%;
-  background-color: var(--background-color);
-  border-radius: 15px;
-  box-shadow: 0px 0px 10px 0px var(--box-shadow-color);
-  padding: 20px;
-}
-#expenses h1 {
-  font-size: var(--font-size);
-  color: var(--secondary-color);
-}
-#expenses input {
-  width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  border-color: #0000001e;
-  padding: 0 0.2vw;
-  font-size: 1rem;
-}
-
-#expenses > div {
+.box > div {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-#expenses button {
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border-color: #0000001e;
+  padding: 0 10px;
+  font-size: 1rem;
+}
+input:focus {
+  box-shadow: 0px 0px 7px 0px var(--primary-color);
+  outline: none;
+}
+h1 {
+  font-weight: bold;
+  font-size: var(--font-size);
+  color: var(--secondary-color);
+  cursor: default;
+}
+h2 {
+  font-weight: 500;
+  font-size: var(--font-size);
+  color: gray;
+  opacity: 0.7;
+  cursor: default;
+}
+p {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+button {
   border-radius: 5px;
   background-color: var(--primary-color);
   color: var(--background-color);
@@ -119,6 +104,11 @@ body {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
+}
+button:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0px 0px 7px 0px var(--primary-color);
+  transition: 0.1s ease-in-out;
 }
 
 #center {
@@ -131,6 +121,10 @@ body {
   background-color: var(--primary-color);
   box-shadow: 0px 0px 10px 0px var(--box-shadow-color);
   border-radius: 15px;
+}
+#center:hover {
+  box-shadow: 0px 0px 15px 2px var(--box-shadow-color);
+  transition: 0.1s ease-in-out;
 }
 #center > div {
   display: flex;
@@ -148,7 +142,7 @@ body {
   color: var(--background-color);
 }
 
-#bottom {
+.box {
   display: flex;
   justify-content: start;
   align-items: start;
@@ -172,9 +166,10 @@ body {
   list-style: none;
   width: 100%;
 }
-.expenselist {
+.expenceList {
   display: none;
 }
+
 #bottom ul li {
   display: flex;
   justify-content: space-between;
@@ -186,6 +181,10 @@ body {
   box-shadow: 0px 0px 10px 0px var(--box-shadow-color);
   border-left: 7px solid var(--primary-color);
 }
+#bottom ul li:hover {
+  box-shadow: 0px 0px 15px 0px var(--box-shadow-color);
+  transition: 0.1s ease-in-out;
+}
 #bottom ul li > div {
   display: flex;
   justify-content: center;
@@ -195,6 +194,10 @@ body {
 #bottom ul li > div > i {
   font-size: 1.2rem;
   cursor: pointer;
+}
+#bottom ul li > div > i:hover {
+  box-shadow: 0px 0px 10px 0px var(--box-shadow-color);
+  transition: 0.1s ease-in-out;
 }
 #bottom .data {
   display: none;
@@ -209,124 +212,57 @@ body {
   color: var(--secondary-color);
 }
 
-/* Tablet and smaller screens */
-@media (max-width: 1024px) {
-  html,
-  body {
-    gap: 30px;
-    padding: 10px;
-  }
+@media (max-width: 900px) {
   #main {
+    width: 95%;
     height: auto;
-    width: 90%;
+    min-height: 80%;
     gap: 30px;
   }
+
   #top {
-    height: auto;
     flex-direction: column;
     gap: 20px;
-  }
-  #budget,
-  #expenses {
-    height: auto;
-  }
-  #center {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  :root {
-    --font-size: 1.2rem;
   }
 }
 
-/* Mobile phones */
 @media (max-width: 600px) {
-  h1 {
-    font-size: 1.5rem;
+  :root {
+    --font-size: 20px;
   }
+
   html,
   body {
-    gap: 20px;
-    padding: 5px;
+    gap: 25px;
+    padding: 15px 0;
   }
+
   #main {
-    width: 100%;
-    gap: 20px;
+    width: 96%;
+    padding-bottom: 10px;
   }
-  #top {
-    gap: 15px;
-  }
-  #budget,
-  #expenses,
-  #bottom {
-    padding: 15px;
-    gap: 15px;
-  }
-  #budget h1,
-  #expenses h1,
-  #bottom h1 {
-    font-size: 1.1rem;
-  }
-  #budget input,
-  #expenses input {
-    height: 35px;
-    font-size: 0.9rem;
-  }
-  #budget button,
-  #expenses button {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    width: 100%;
-  }
+
   #center {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     padding: 15px;
   }
+
   #center > div {
     width: 100%;
   }
-  #center h1 {
-    font-size: 1rem;
-  }
-  #center p {
-    font-size: 1.1rem;
-  }
-  #bottom ul li {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-    gap: 10px;
-  }
-  #bottom ul li > div {
-    gap: 20px;
-    width: 100%;
-    justify-content: flex-end;
-  }
-  #bottom ul li > span {
-    font-size: 0.95rem;
-  }
-  :root {
-    --font-size: 1rem;
-  }
 }
 
-/* Extra small phones */
-@media (max-width: 400px) {
-  #budget input,
-  #expenses input {
-    height: 32px;
-    font-size: 0.85rem;
+@media (max-width: 420px) {
+  :root {
+    --font-size: 18px;
   }
-  #budget button,
-  #expenses button {
-    font-size: 0.85rem;
-    padding: 6px 12px;
+
+  input {
+    height: 38px;
   }
-  #bottom ul li > div {
-    gap: 15px;
-  }
-  #bottom ul li > div > i {
-    font-size: 1rem;
+
+  button {
+    padding: 10px 14px;
   }
 }

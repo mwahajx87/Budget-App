@@ -13,7 +13,7 @@ setBudget = () => {
     return;
   } else {
     totalBudget.innerText = totalAmount.value;
-    balance.innerText = parseFloat(totalAmount.innerText) - parseFloat(expense.innerText);
+    balance.innerText = totalAmount.value - parseFloat(expense.innerText);
     totalAmount.value = "";
     toastr.success("Budget set successfully!");
   }
